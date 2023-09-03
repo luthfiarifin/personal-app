@@ -7,6 +7,7 @@ import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 
 import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
+import '../layout/about_me_layout.dart';
 import '../layout/header_layout.dart';
 import '../widget/dark_mode_widget.dart';
 import '../widget/toolbar_text_widget.dart';
@@ -97,6 +98,7 @@ class _HomePageState extends State<HomePage> {
           return ListView(
             children: [
               HomeHeaderLayout(header: _data!.header),
+              AboutMeLayout(aboutMe: _data!.aboutMe),
             ],
           );
         }
