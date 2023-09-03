@@ -1,7 +1,23 @@
-// Light and dark ColorSchemes made by FlexColorScheme v7.3.1.
-// These ColorScheme objects require Flutter 3.7 or later.
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+ThemeData buildThemeData({
+  required BuildContext context,
+  bool isDarkTheme = false,
+}) {
+  return ThemeData(
+    useMaterial3: true,
+    brightness: isDarkTheme ? Brightness.dark : Brightness.light,
+    colorScheme: isDarkTheme ? flexSchemeDark : flexSchemeLight,
+    textTheme: GoogleFonts.interTextTheme(
+      isDarkTheme ? _darkTextTheme : _lightextTheme,
+    ),
+  );
+}
+
+TextTheme _darkTextTheme = ThemeData.dark(useMaterial3: true).textTheme;
+
+TextTheme _lightextTheme = ThemeData.light(useMaterial3: true).textTheme;
 
 const ColorScheme flexSchemeLight = ColorScheme(
   brightness: Brightness.light,

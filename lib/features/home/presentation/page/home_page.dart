@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 
+import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
+import '../layout/header_layout.dart';
 import '../widget/dark_mode_widget.dart';
 import '../widget/toolbar_text_widget.dart';
 
@@ -26,6 +28,8 @@ class HomePage extends StatefulWidget implements AutoRouteWrapper {
 }
 
 class _HomePageState extends State<HomePage> {
+  HomeResponseModel? _data;
+
   @override
   void initState() {
     _initData();
@@ -53,6 +57,7 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       centerTitle: false,
       titleTextStyle: Theme.of(context).textTheme.titleSmall,
+      titleSpacing: 320,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -82,25 +87,22 @@ class _HomePageState extends State<HomePage> {
 
   Widget _body() {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is GetHomeLoaded) {
+          _data = state.data;
+        }
+      },
       builder: (context, state) {
-        if (state is GetHomeLoading) {
-          return const CircularProgressIndicator();
+        if (state is GetHomeLoaded) {
+          return ListView(
+            children: [
+              HomeHeaderLayout(header: _data!.header),
+            ],
+          );
         }
 
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                'Test123',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              SizedBox(
-                height: 5000,
-                width: double.infinity,
-              ),
-            ],
-          ),
+        return const Center(
+          child: CircularProgressIndicator(),
         );
       },
     );

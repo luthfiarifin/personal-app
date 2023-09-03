@@ -1,6 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'config/di/injection.dart';
 import 'config/router/router.dart';
@@ -22,22 +21,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-      light: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.light,
-        colorScheme: flexSchemeLight,
-        textTheme: GoogleFonts.interTextTheme(
-          ThemeData.light(useMaterial3: true).textTheme,
-        ),
-      ),
-      dark: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        colorScheme: flexSchemeDark,
-        textTheme: GoogleFonts.interTextTheme(
-          ThemeData.dark(useMaterial3: true).textTheme,
-        ),
-      ),
+      light: buildThemeData(context: context),
+      dark: buildThemeData(context: context, isDarkTheme: true),
       initial: AdaptiveThemeMode.light,
       builder: (theme, darkTheme) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
