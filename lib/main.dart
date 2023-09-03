@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'config/di/injection.dart';
 import 'config/router/router.dart';
-import 'features/home/presentation/page/home_page.dart';
 import 'config/theme/theme.dart';
 
 void main() {
