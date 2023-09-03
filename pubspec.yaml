@@ -25,6 +25,7 @@ dependencies:
   injectable: ^2.3.0
   json_annotation: ^4.8.1
   markdown: ^7.1.1
+  url_launcher: ^6.1.14
 
 dev_dependencies:
   auto_route_generator: ^7.3.1
