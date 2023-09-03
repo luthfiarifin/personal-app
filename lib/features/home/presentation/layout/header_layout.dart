@@ -4,6 +4,7 @@ import 'package:personal_app/core/presentation/extensions/build_context_extensio
 import 'package:personal_app/features/home/data/model/home_header_response_model.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
+import '../../../../core/presentation/util/launch_util.dart';
 import '../widget/home_background.dart';
 
 class HomeHeaderLayout extends StatelessWidget {
@@ -85,7 +86,7 @@ class HomeHeaderLayout extends StatelessWidget {
       height: 56,
       width: 190,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: _onConnectClicked,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -130,5 +131,9 @@ class HomeHeaderLayout extends StatelessWidget {
         )
       ],
     );
+  }
+
+  void _onConnectClicked() async {
+    await LaunchUtil.launchWeb(header.linkedin.link);
   }
 }
