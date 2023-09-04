@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
+import 'package:personal_app/features/home/presentation/layout/experiences_layout.dart';
 
 import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
@@ -103,6 +104,7 @@ class _HomePageState extends State<HomePage> {
               HomeHeaderLayout(header: _data!.header),
               AboutMeLayout(aboutMe: _data!.aboutMe),
               SkillsLayout(skills: _data!.skills),
+              ExperiencesLayout(experiences: _data!.experiences),
             ],
           );
         }

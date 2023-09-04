@@ -28,13 +28,13 @@ class SkillsLayout extends StatelessWidget {
             style: context.bodyLarge,
           ),
           GapConstant.h48,
-          _listSkills(context)
+          _listSkills()
         ],
       ),
     );
   }
 
-  Widget _listSkills(BuildContext context) {
+  Widget _listSkills() {
     var items = skills.items;
 
     return Wrap(
