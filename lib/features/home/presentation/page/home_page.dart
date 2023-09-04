@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
         }
 
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator.adaptive(),
         );
       },
     );
