@@ -126,7 +126,7 @@ class _ProjectItem extends StatelessWidget {
           children: [
             Text(
               item.name,
-              style: context.bodyLarge?.copyWith(
+              style: context.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

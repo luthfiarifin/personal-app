@@ -60,10 +60,7 @@ class _ExperienceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 32,
-        vertical: 38,
-      ),
+      padding: const EdgeInsets.all(40),
       margin: const EdgeInsets.only(
         top: 24,
         right: 100,
