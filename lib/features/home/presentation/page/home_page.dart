@@ -59,13 +59,15 @@ class _HomePageState extends State<HomePage> {
       centerTitle: false,
       titleTextStyle: Theme.of(context).textTheme.titleSmall,
       titleSpacing: 320,
+      scrolledUnderElevation: 4,
+      shadowColor: Colors.grey.shade50.withOpacity(0.2),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             '@luthfiarifin',
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
                 ),
           ),
           Row(

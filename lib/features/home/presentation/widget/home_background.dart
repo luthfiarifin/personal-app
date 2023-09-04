@@ -19,7 +19,9 @@ class HomeBackground extends StatelessWidget {
         horizontal: 320,
         vertical: 90,
       ),
-      color: isGrey ? colorScheme.onInverseSurface : colorScheme.background,
+      color: isGrey
+          ? colorScheme.surfaceTint.withOpacity(0.04)
+          : colorScheme.background,
       child: child,
     );
   }
