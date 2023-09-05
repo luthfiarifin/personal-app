@@ -95,7 +95,7 @@ class HomeHeaderLayout extends StatelessWidget {
               height: 32,
               width: 32,
               colorFilter: ColorFilter.mode(
-                context.isDarkMode ? Colors.white : Colors.grey.shade600,
+                context.textColor,
                 BlendMode.srcIn,
               ),
             ),
