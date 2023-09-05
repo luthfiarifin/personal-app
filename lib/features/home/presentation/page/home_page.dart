@@ -8,6 +8,7 @@ import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
 import '../layout/about_me_layout.dart';
+import '../layout/contact_layout.dart';
 import '../layout/header_layout.dart';
 import '../layout/projects_layout.dart';
 import '../layout/services_layout.dart';
@@ -107,6 +108,7 @@ class _HomePageState extends State<HomePage> {
               ServicesLayout(services: _data!.services),
               SkillsLayout(skills: _data!.skills),
               ProjectsLayout(projects: _data!.projects),
+              ContactLayout(contact: _data!.contact),
             ],
           );
         }
