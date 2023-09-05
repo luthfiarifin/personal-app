@@ -5,6 +5,7 @@ import 'home_contact_response_model.dart';
 import 'home_experiences_response_model.dart';
 import 'home_header_response_model.dart';
 import 'home_projects_response_model.dart';
+import 'home_services_response_model.dart';
 import 'home_skills_response_model.dart';
 
 part 'home_response_model.g.dart';
@@ -18,6 +19,7 @@ class HomeResponseModel {
     required this.experiences,
     required this.projects,
     required this.contact,
+    required this.services,
   });
 
   final HomeHeaderResponseModel header;
@@ -26,6 +28,7 @@ class HomeResponseModel {
   final HomeExperiencesResponseModel experiences;
   final HomeProjectsResponseModel projects;
   final HomeContactResponseModel contact;
+  final HomeServicesResponseModel services;
 
   factory HomeResponseModel.fromJson(Map<String, dynamic> json) =>
       _$HomeResponseModelFromJson(json);

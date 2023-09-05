@@ -20,6 +20,8 @@ HomeResponseModel _$HomeResponseModelFromJson(Map<String, dynamic> json) =>
           json['projects'] as Map<String, dynamic>),
       contact: HomeContactResponseModel.fromJson(
           json['contact'] as Map<String, dynamic>),
+      services: HomeServicesResponseModel.fromJson(
+          json['services'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$HomeResponseModelToJson(HomeResponseModel instance) =>
@@ -30,4 +32,5 @@ Map<String, dynamic> _$HomeResponseModelToJson(HomeResponseModel instance) =>
       'experiences': instance.experiences,
       'projects': instance.projects,
       'contact': instance.contact,
+      'services': instance.services,
     };
