@@ -14,8 +14,8 @@ class ApiClient {
         receiveTimeout: const Duration(milliseconds: 10000),
         baseUrl: baseUrl,
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          'Sec-Fetch-Mode': 'cors',
+          'Sec-Fetch-Site': 'cors-site',
         },
       )
       ..interceptors.addAll([
