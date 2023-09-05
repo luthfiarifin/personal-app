@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
-import 'package:personal_app/features/home/presentation/layout/experiences_layout.dart';
 
 import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
 import '../layout/about_me_layout.dart';
 import '../layout/header_layout.dart';
 import '../layout/projects_layout.dart';
+import '../layout/services_layout.dart';
 import '../layout/skills_layout.dart';
 import '../widget/dark_mode_widget.dart';
 import '../widget/toolbar_text_widget.dart';
@@ -104,8 +104,8 @@ class _HomePageState extends State<HomePage> {
             children: [
               HomeHeaderLayout(header: _data!.header),
               AboutMeLayout(aboutMe: _data!.aboutMe),
+              ServicesLayout(services: _data!.services),
               SkillsLayout(skills: _data!.skills),
-              ExperiencesLayout(experiences: _data!.experiences),
               ProjectsLayout(projects: _data!.projects),
             ],
           );

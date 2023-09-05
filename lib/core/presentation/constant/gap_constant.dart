@@ -38,6 +38,7 @@ class GapConstant {
   static const h64 = SizedBox(height: SizeConstant.p64);
   static const h72 = SizedBox(height: SizeConstant.p72);
   static const h80 = SizedBox(height: SizeConstant.p80);
+  static const h96 = SizedBox(height: SizeConstant.p96);
 
   static SizedBox size({double? h, double? w}) => SizedBox(
         height: h,

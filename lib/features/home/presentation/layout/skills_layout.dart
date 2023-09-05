@@ -17,6 +17,7 @@ class SkillsLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomeBackground(
+      isGrey: true,
       child: Column(
         children: [
           const ChipWidget(
