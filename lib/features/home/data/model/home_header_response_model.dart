@@ -13,11 +13,13 @@ class HomeHeaderResponseModel {
     required this.image,
     required this.isAvailableForProject,
     required this.linkedin,
+    required this.contacts,
   });
 
   final String title, description, location, image;
   final bool isAvailableForProject;
   final HomeSocialMediaResponseModel linkedin;
+  final List<HomeSocialMediaResponseModel> contacts;
 
   factory HomeHeaderResponseModel.fromJson(Map<String, dynamic> json) =>
       _$HomeHeaderResponseModelFromJson(json);

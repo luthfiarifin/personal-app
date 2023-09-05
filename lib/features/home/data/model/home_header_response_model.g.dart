@@ -16,6 +16,10 @@ HomeHeaderResponseModel _$HomeHeaderResponseModelFromJson(
       isAvailableForProject: json['isAvailableForProject'] as bool,
       linkedin: HomeSocialMediaResponseModel.fromJson(
           json['linkedin'] as Map<String, dynamic>),
+      contacts: (json['contacts'] as List<dynamic>)
+          .map((e) =>
+              HomeSocialMediaResponseModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$HomeHeaderResponseModelToJson(
@@ -27,4 +31,5 @@ Map<String, dynamic> _$HomeHeaderResponseModelToJson(
       'image': instance.image,
       'isAvailableForProject': instance.isAvailableForProject,
       'linkedin': instance.linkedin,
+      'contacts': instance.contacts,
     };

@@ -8,10 +8,11 @@ class HomeSocialMediaResponseModel {
     required this.type,
     required this.text,
     required this.link,
+    required this.icon,
   });
 
   final String link;
-  final String? text, type;
+  final String? text, type, icon;
 
   factory HomeSocialMediaResponseModel.fromJson(Map<String, dynamic> json) =>
       _$HomeSocialMediaResponseModelFromJson(json);

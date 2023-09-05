@@ -12,6 +12,7 @@ HomeSocialMediaResponseModel _$HomeSocialMediaResponseModelFromJson(
       type: json['type'] as String?,
       text: json['text'] as String?,
       link: json['link'] as String,
+      icon: json['icon'] as String?,
     );
 
 Map<String, dynamic> _$HomeSocialMediaResponseModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$HomeSocialMediaResponseModelToJson(
       'link': instance.link,
       'text': instance.text,
       'type': instance.type,
+      'icon': instance.icon,
     };
