@@ -7,9 +7,11 @@ class HomeSkillsItemResponseModel {
   HomeSkillsItemResponseModel({
     required this.text,
     required this.image,
+    required this.isBlack,
   });
 
   final String text, image;
+  final bool? isBlack;
 
   factory HomeSkillsItemResponseModel.fromJson(Map<String, dynamic> json) =>
       _$HomeSkillsItemResponseModelFromJson(json);

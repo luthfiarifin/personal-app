@@ -11,6 +11,7 @@ HomeSkillsItemResponseModel _$HomeSkillsItemResponseModelFromJson(
     HomeSkillsItemResponseModel(
       text: json['text'] as String,
       image: json['image'] as String,
+      isBlack: json['isBlack'] as bool?,
     );
 
 Map<String, dynamic> _$HomeSkillsItemResponseModelToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$HomeSkillsItemResponseModelToJson(
     <String, dynamic>{
       'text': instance.text,
       'image': instance.image,
+      'isBlack': instance.isBlack,
     };
