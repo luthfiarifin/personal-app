@@ -33,15 +33,25 @@ class MyApp extends StatelessWidget {
         routerConfig: _appRouter.config(),
         builder: (context, child) => ResponsiveBreakpoints.builder(
           breakpoints: [
-            const Breakpoint(start: 0, end: 450, name: MOBILE),
+            const Breakpoint(start: 0, end: 360, name: 'SMALL_MOBILE'),
+            const Breakpoint(start: 361, end: 450, name: MOBILE),
             const Breakpoint(start: 451, end: 800, name: TABLET),
             const Breakpoint(start: 801, end: 1920, name: DESKTOP),
             const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
           ],
-          child: BouncingScrollWrapper.builder(
-            context,
-            child!,
-            dragWithMouse: true,
+          child: Builder(
+            builder: (context) {
+              return ResponsiveScaledBox(
+                width: ResponsiveValue<double>(context, conditionalValues: [
+                  Condition.equals(name: 'SMALL_MOBILE', value: 361),
+                ]).value,
+                child: BouncingScrollWrapper.builder(
+                  context,
+                  child!,
+                  dragWithMouse: true,
+                ),
+              );
+            },
           ),
         ),
       ),
