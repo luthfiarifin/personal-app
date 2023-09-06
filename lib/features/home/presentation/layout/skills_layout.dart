@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
 import 'package:personal_app/features/home/data/model/home_skills_item_response_model.dart';
@@ -40,7 +40,7 @@ class SkillsLayout extends StatelessWidget {
 
     return Wrap(
       alignment: WrapAlignment.center,
-      runSpacing: 16,
+      runSpacing: 32,
       spacing: 64,
       children: items
           .map(
@@ -68,6 +68,7 @@ class _SkillsItem extends StatelessWidget {
           item.image,
           width: 84,
           height: 84,
+          color: item.isBlack == true ? context.colorScheme.onSurface : null,
         ),
         GapConstant.h16,
         Text(
