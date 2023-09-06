@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
+import 'package:responsive_framework/max_width_box.dart';
 
+import '../../../../core/presentation/constant/size_constant.dart';
 import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
 import '../layout/about_me_layout.dart';
@@ -62,32 +64,40 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       centerTitle: false,
       titleTextStyle: Theme.of(context).textTheme.titleSmall,
-      titleSpacing: 320,
       scrolledUnderElevation: 4,
       shadowColor: Colors.grey.shade50.withOpacity(0.2),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '@luthfiarifin',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                ),
-          ),
-          Row(
-            children: [
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w24,
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w24,
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w24,
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w48,
-              const DarkModeWidget(),
-            ],
-          ),
-        ],
+      title: _appBarContent(context),
+    );
+  }
+
+  Widget _appBarContent(BuildContext context) {
+    return Center(
+      child: MaxWidthBox(
+        maxWidth: MaxSizeConstant.maxWidth,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              '@luthfiarifin',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
+            ),
+            Row(
+              children: [
+                ToolbarTextWidget(text: 'About', onTap: () {}),
+                GapConstant.w24,
+                ToolbarTextWidget(text: 'About', onTap: () {}),
+                GapConstant.w24,
+                ToolbarTextWidget(text: 'About', onTap: () {}),
+                GapConstant.w24,
+                ToolbarTextWidget(text: 'About', onTap: () {}),
+                GapConstant.w48,
+                const DarkModeWidget(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
