@@ -26,5 +26,9 @@ extension XAdaptiveTheme on BuildContext {
 }
 
 extension XColorTheme on BuildContext {
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
   Color get textColor => isDarkMode ? Colors.white : Colors.grey.shade600;
+  Color get shadowColor =>
+      isDarkMode ? Colors.grey.shade800 : Colors.grey.shade200;
 }

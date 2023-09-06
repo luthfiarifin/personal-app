@@ -69,6 +69,12 @@ class _ServicesItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Theme.of(context).colorScheme.onInverseSurface,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 16,
+            color: context.shadowColor
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(32),
       child: Column(

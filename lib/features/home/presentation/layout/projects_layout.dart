@@ -70,9 +70,7 @@ class _ProjectItem extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 16,
-            color: context.isDarkMode
-                ? Colors.grey.shade800
-                : Colors.grey.shade200,
+            color: context.shadowColor,
           ),
         ],
       ),
