@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:responsive_framework/max_width_box.dart';
 
 import '../../../../core/presentation/constant/size_constant.dart';
@@ -21,8 +22,9 @@ class HomeBackground extends StatelessWidget {
         : colorScheme.background;
 
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 90,
+      padding: EdgeInsets.symmetric(
+        vertical: context.isDisplayLargeThanTablet ? 90 : 32,
+        horizontal: 16,
       ),
       color: color,
       child: MaxWidthBox(
