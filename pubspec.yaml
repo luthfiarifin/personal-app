@@ -27,6 +27,7 @@ dependencies:
   intl: ^0.18.1
   json_annotation: ^4.8.1
   markdown: ^7.1.1
+  responsive_framework: ^1.1.0
   url_launcher: ^6.1.14
 
 dev_dependencies:
