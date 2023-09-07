@@ -21,7 +21,6 @@ class BottomLayout extends StatelessWidget {
           styleSheet: MarkdownStyleSheet(
             textAlign: WrapAlignment.center,
           ),
-          styleSheetTheme: MarkdownStyleSheetBaseTheme.platform,
         ),
       ),
     );
