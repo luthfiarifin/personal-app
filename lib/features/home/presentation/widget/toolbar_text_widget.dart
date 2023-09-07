@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ToolbarTextWidget extends StatelessWidget {
   final String text;
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   const ToolbarTextWidget({
     super.key,

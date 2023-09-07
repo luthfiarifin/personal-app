@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'config/di/injection.dart';
 import 'config/router/router.dart';
@@ -26,10 +27,33 @@ class MyApp extends StatelessWidget {
       initial: AdaptiveThemeMode.light,
       builder: (theme, darkTheme) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'Adaptive Theme Demo',
+        title: '@luthfiarifin',
         theme: theme,
         darkTheme: darkTheme,
         routerConfig: _appRouter.config(),
+        builder: (context, child) => ResponsiveBreakpoints.builder(
+          breakpoints: [
+            const Breakpoint(start: 0, end: 360, name: 'SMALL_MOBILE'),
+            const Breakpoint(start: 361, end: 450, name: MOBILE),
+            const Breakpoint(start: 451, end: 800, name: TABLET),
+            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          ],
+          child: Builder(
+            builder: (context) {
+              return ResponsiveScaledBox(
+                width: ResponsiveValue<double>(context, conditionalValues: [
+                  Condition.equals(name: 'SMALL_MOBILE', value: 361),
+                ]).value,
+                child: BouncingScrollWrapper.builder(
+                  context,
+                  child!,
+                  dragWithMouse: true,
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

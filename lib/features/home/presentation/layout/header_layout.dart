@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:personal_app/features/home/data/model/home_header_response_model.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
 import '../../../../core/presentation/util/launch_util.dart';
@@ -18,28 +20,35 @@ class HomeHeaderLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomeBackground(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: ResponsiveRowColumn(
+        columnMainAxisAlignment: MainAxisAlignment.center,
+        columnSpacing: 32,
+        rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+        layout: context.isDisplayLargeThanTablet
+            ? ResponsiveRowColumnType.ROW
+            : ResponsiveRowColumnType.COLUMN,
         children: [
-          Expanded(
-            flex: 5,
+          ResponsiveRowColumnItem(
+            rowFlex: 5,
+            columnOrder: 2,
             child: _leftLayout(context),
           ),
-          Expanded(
-            flex: 4,
-            child: _rightLayout(),
+          ResponsiveRowColumnItem(
+            rowFlex: 4,
+            columnOrder: 1,
+            child: _rightLayout(context),
           ),
         ],
       ),
     );
   }
 
-  Widget _rightLayout() {
-    return Align(
-      alignment: Alignment.centerRight,
+  Widget _rightLayout(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+          maxHeight: context.isDisplayLargeThanTablet ? 380 : 300),
       child: Image.network(
         header.image,
-        height: 384,
       ),
     );
   }
@@ -53,13 +62,14 @@ class HomeHeaderLayout extends StatelessWidget {
           style: context.displayMedium?.copyWith(
             fontWeight: FontWeight.w900,
           ),
+          textScaleFactor: context.titleScaleFactor,
         ),
         GapConstant.h16,
         Text(
           header.description,
           style: context.bodyMedium,
         ),
-        GapConstant.h48,
+        GapConstant.h32,
         _headerItem(
           context: context,
           icon: Icons.location_on_outlined,
@@ -75,7 +85,7 @@ class HomeHeaderLayout extends StatelessWidget {
           iconColor:
               header.isAvailableForProject ? Colors.green.shade600 : Colors.red,
         ),
-        GapConstant.h48,
+        GapConstant.h32,
         _buttonConnect(context),
       ],
     );
@@ -121,13 +131,13 @@ class HomeHeaderLayout extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: 16,
+          size: 24,
           color: iconColor,
         ),
-        GapConstant.w8,
+        GapConstant.w12,
         Text(
           text,
-          style: context.bodySmall,
+          style: context.bodyMedium,
         )
       ],
     );

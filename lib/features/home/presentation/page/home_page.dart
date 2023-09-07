@@ -4,10 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
+import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
+import 'package:responsive_framework/max_width_box.dart';
 
+import '../../../../core/presentation/constant/size_constant.dart';
 import '../../data/model/home_response_model.dart';
 import '../cubit/home_cubit.dart';
 import '../layout/about_me_layout.dart';
+import '../layout/bottom_layout.dart';
 import '../layout/contact_layout.dart';
 import '../layout/header_layout.dart';
 import '../layout/projects_layout.dart';
@@ -53,6 +58,7 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           appBar: _appBar(context),
           body: _body(),
+          endDrawer: _drawer(context),
         );
       },
     );
@@ -62,33 +68,54 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       centerTitle: false,
       titleTextStyle: Theme.of(context).textTheme.titleSmall,
-      titleSpacing: 320,
       scrolledUnderElevation: 4,
       shadowColor: Colors.grey.shade50.withOpacity(0.2),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '@luthfiarifin',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                ),
-          ),
-          Row(
-            children: [
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w24,
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w24,
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w24,
-              ToolbarTextWidget(text: 'About', onTap: () {}),
-              GapConstant.w48,
-              const DarkModeWidget(),
-            ],
-          ),
-        ],
+      title: _appBarContent(context),
+    );
+  }
+
+  Widget _appBarContent(BuildContext context) {
+    return Center(
+      child: MaxWidthBox(
+        maxWidth: MaxSizeConstant.maxWidth,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              '@luthfiarifin',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                  ),
+            ),
+            if (context.isDisplayLargeThanTablet) _toolbarItems(),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _toolbarItems() {
+    return Row(
+      children: [
+        ..._generateToolbarItem()
+            .map(
+              (e) => Padding(
+                padding: const EdgeInsets.only(left: 24),
+                child: ToolbarTextWidget(text: e.text, onTap: e.onTap),
+              ),
+            )
+            .toList(),
+        GapConstant.w24,
+        const DarkModeWidget(),
+      ],
+    );
+  }
+
+  Widget? _drawer(BuildContext context) {
+    if (context.isDisplayLargeThanTablet) return null;
+
+    return _HomeDrawer(
+      items: _generateToolbarItem(),
     );
   }
 
@@ -109,6 +136,7 @@ class _HomePageState extends State<HomePage> {
               SkillsLayout(skills: _data!.skills),
               ProjectsLayout(projects: _data!.projects),
               ContactLayout(contact: _data!.contact),
+              BottomLayout(bottom: _data!.bottom),
             ],
           );
         }
@@ -119,4 +147,80 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+  List<_ToolbarItem> _generateToolbarItem() {
+    return [
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+    ];
+  }
+}
+
+class _HomeDrawer extends StatelessWidget {
+  final List<_ToolbarItem> items;
+
+  const _HomeDrawer({
+    required this.items,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: [
+          GapConstant.h16,
+          ...items
+              .map(
+                (e) => ListTile(
+                  title: Text(e.text),
+                  onTap: () => _onItemClicked(e, context),
+                ),
+              )
+              .toList(),
+          GapConstant.h8,
+          const Divider(
+            thickness: 0.4,
+          ),
+          GapConstant.h8,
+          _switchTheme(context),
+        ],
+      ),
+    );
+  }
+
+  void _onItemClicked(_ToolbarItem e, BuildContext context) {
+    Scaffold.of(context).closeEndDrawer();
+    e.onTap?.call();
+  }
+
+  Widget _switchTheme(BuildContext context) {
+    return ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Switch theme',
+            style: context.bodyLarge,
+          ),
+          const DarkModeWidget(),
+        ],
+      ),
+      onTap: () {
+        context.setDarkOrLight();
+      },
+    );
+  }
+}
+
+class _ToolbarItem {
+  final String text;
+  final GestureTapCallback? onTap;
+
+  _ToolbarItem({
+    required this.text,
+    this.onTap,
+  });
 }

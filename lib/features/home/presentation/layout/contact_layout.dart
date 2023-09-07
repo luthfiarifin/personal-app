@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:personal_app/features/home/data/model/home_contact_response_model.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
@@ -57,14 +58,21 @@ class ContactLayout extends StatelessWidget {
           Icons.email_outlined,
           size: 32,
         ),
-        GapConstant.w24,
+        if (context.isDisplayLargeThanTablet)
+          GapConstant.w24
+        else
+          GapConstant.w16,
         Text(
           contact.email,
           style: context.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
           ),
+          textScaleFactor: context.titleScaleFactor,
         ),
-        GapConstant.w24,
+        if (context.isDisplayLargeThanTablet)
+          GapConstant.w16
+        else
+          GapConstant.w8,
         IconButton(
           onPressed: () {
             _launchUrl('mailto:${contact.email}');

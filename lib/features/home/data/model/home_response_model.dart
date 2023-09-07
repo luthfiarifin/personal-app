@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'home_about_me_response_model.dart';
+import 'home_bottom_response_model.dart';
 import 'home_contact_response_model.dart';
 import 'home_experiences_response_model.dart';
 import 'home_header_response_model.dart';
@@ -20,6 +21,7 @@ class HomeResponseModel {
     required this.projects,
     required this.contact,
     required this.services,
+    required this.bottom,
   });
 
   final HomeHeaderResponseModel header;
@@ -29,6 +31,7 @@ class HomeResponseModel {
   final HomeProjectsResponseModel projects;
   final HomeContactResponseModel contact;
   final HomeServicesResponseModel services;
+  final HomeBottomResponseModel bottom;
 
   factory HomeResponseModel.fromJson(Map<String, dynamic> json) =>
       _$HomeResponseModelFromJson(json);

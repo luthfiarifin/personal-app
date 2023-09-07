@@ -17,3 +17,7 @@ class SizeConstant {
   static const p80 = 80.0;
   static const p96 = 96.0;
 }
+
+class MaxSizeConstant {
+  static const double maxWidth = 1100;
+}
