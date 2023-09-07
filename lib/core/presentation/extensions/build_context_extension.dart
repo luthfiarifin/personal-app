@@ -23,6 +23,14 @@ extension XTextTheme on BuildContext {
 
 extension XAdaptiveTheme on BuildContext {
   bool get isDarkMode => AdaptiveTheme.of(this).mode == AdaptiveThemeMode.dark;
+
+  void setDarkOrLight() {
+    if (!isDarkMode) {
+      AdaptiveTheme.of(this).setDark();
+    } else {
+      AdaptiveTheme.of(this).setLight();
+    }
+  }
 }
 
 extension XColorTheme on BuildContext {

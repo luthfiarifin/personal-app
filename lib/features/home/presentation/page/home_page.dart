@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
+import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:responsive_framework/max_width_box.dart';
 
 import '../../../../core/presentation/constant/size_constant.dart';
@@ -55,6 +57,7 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           appBar: _appBar(context),
           body: _body(),
+          endDrawer: _drawer(context),
         );
       },
     );
@@ -83,22 +86,35 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w900,
                   ),
             ),
-            Row(
-              children: [
-                ToolbarTextWidget(text: 'About', onTap: () {}),
-                GapConstant.w24,
-                ToolbarTextWidget(text: 'About', onTap: () {}),
-                GapConstant.w24,
-                ToolbarTextWidget(text: 'About', onTap: () {}),
-                GapConstant.w24,
-                ToolbarTextWidget(text: 'About', onTap: () {}),
-                GapConstant.w48,
-                const DarkModeWidget(),
-              ],
-            ),
+            if (context.isDisplayLargeThanTablet) _toolbarItems(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _toolbarItems() {
+    return Row(
+      children: [
+        ..._generateToolbarItem()
+            .map(
+              (e) => Padding(
+                padding: const EdgeInsets.only(left: 24),
+                child: ToolbarTextWidget(text: e.text, onTap: e.onTap),
+              ),
+            )
+            .toList(),
+        GapConstant.w24,
+        const DarkModeWidget(),
+      ],
+    );
+  }
+
+  Widget? _drawer(BuildContext context) {
+    if (context.isDisplayLargeThanTablet) return null;
+
+    return _HomeDrawer(
+      items: _generateToolbarItem(),
     );
   }
 
@@ -129,4 +145,80 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+  List<_ToolbarItem> _generateToolbarItem() {
+    return [
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About'),
+    ];
+  }
+}
+
+class _HomeDrawer extends StatelessWidget {
+  final List<_ToolbarItem> items;
+
+  const _HomeDrawer({
+    required this.items,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: [
+          GapConstant.h16,
+          ...items
+              .map(
+                (e) => ListTile(
+                  title: Text(e.text),
+                  onTap: () => _onItemClicked(e, context),
+                ),
+              )
+              .toList(),
+          GapConstant.h8,
+          const Divider(
+            thickness: 0.4,
+          ),
+          GapConstant.h8,
+          _switchTheme(context),
+        ],
+      ),
+    );
+  }
+
+  void _onItemClicked(_ToolbarItem e, BuildContext context) {
+    Scaffold.of(context).closeEndDrawer();
+    e.onTap?.call();
+  }
+
+  Widget _switchTheme(BuildContext context) {
+    return ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Switch theme',
+            style: context.bodyLarge,
+          ),
+          const DarkModeWidget(),
+        ],
+      ),
+      onTap: () {
+        context.setDarkOrLight();
+      },
+    );
+  }
+}
+
+class _ToolbarItem {
+  final String text;
+  final GestureTapCallback? onTap;
+
+  _ToolbarItem({
+    required this.text,
+    this.onTap,
+  });
 }
