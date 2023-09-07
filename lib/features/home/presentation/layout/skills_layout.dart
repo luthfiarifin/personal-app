@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:personal_app/features/home/data/model/home_skills_item_response_model.dart';
 import 'package:personal_app/features/home/data/model/home_skills_response_model.dart';
 import 'package:personal_app/features/home/presentation/widget/chip_widget.dart';
@@ -62,20 +63,24 @@ class _SkillsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.network(
-          item.image,
-          width: 84,
-          height: 84,
-          color: item.isBlack == true ? context.colorScheme.onSurface : null,
-        ),
-        GapConstant.h16,
-        Text(
-          item.text,
-          style: context.bodyMedium,
-        ),
-      ],
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: context.isDisplayLargeThanTablet ? 84 : 68,
+      ),
+      child: Column(
+        children: [
+          Image.network(
+            item.image,
+            color: item.isBlack == true ? context.colorScheme.onSurface : null,
+          ),
+          GapConstant.h16,
+          Text(
+            item.text,
+            style: context.bodyMedium,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
