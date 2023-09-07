@@ -62,7 +62,7 @@ class HomeHeaderLayout extends StatelessWidget {
           style: context.displayMedium?.copyWith(
             fontWeight: FontWeight.w900,
           ),
-          textScaleFactor: context.isDisplayLargeThanTablet ? 1 : 0.8,
+          textScaleFactor: context.titleScaleFactor,
         ),
         GapConstant.h16,
         Text(

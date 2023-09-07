@@ -5,3 +5,7 @@ extension XResponsiveBuildContext on BuildContext {
   bool get isDisplayLargeThanTablet =>
       ResponsiveBreakpoints.of(this).largerThan(TABLET);
 }
+
+extension XResponsiveFontSize on BuildContext {
+  double get titleScaleFactor => isDisplayLargeThanTablet ? 1 : 0.8;
+}
