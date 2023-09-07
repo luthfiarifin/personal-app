@@ -70,6 +70,7 @@ class _HomePageState extends State<HomePage> {
   AppBar _appBar(BuildContext context) {
     return AppBar(
       centerTitle: false,
+      titleSpacing: 32,
       titleTextStyle: Theme.of(context).textTheme.titleSmall,
       scrolledUnderElevation: 4,
       shadowColor: Colors.grey.shade50.withOpacity(0.2),
@@ -132,7 +133,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         if (state is GetHomeLoaded) {
           return ScrollablePositionedList.builder(
-            itemCount: _bodyItems.length,
+                        itemCount: _bodyItems.length,
             itemBuilder: (context, index) => _bodyItems[index],
             itemScrollController: _itemScrollController,
           );
