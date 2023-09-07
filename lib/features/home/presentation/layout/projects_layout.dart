@@ -88,15 +88,11 @@ class _ProjectItem extends StatelessWidget {
           ResponsiveRowColumnItem(
             rowFlex: 1,
             rowOrder: isEven ? 1 : 2,
-            // columnFit: FlexFit.loose,
-            // columnFlex: 2,
             child: _image(context, !isRow),
           ),
           ResponsiveRowColumnItem(
             rowFlex: 1,
             rowOrder: !isEven ? 1 : 2,
-            // columnFlex: 3,
-            // columnFit: FlexFit.loose,
             child: _text(context),
           ),
         ],
