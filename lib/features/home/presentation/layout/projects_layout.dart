@@ -1,9 +1,11 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
+import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:personal_app/core/presentation/util/launch_util.dart';
 import 'package:personal_app/features/home/data/model/home_projects_item_response_model.dart';
 import 'package:personal_app/features/home/data/model/home_projects_response_model.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
 import '../widget/chip_widget.dart';
@@ -62,6 +64,8 @@ class _ProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isRow = context.isDisplayLargeThanTablet;
+
     return Container(
       margin: const EdgeInsets.only(top: 32),
       decoration: BoxDecoration(
@@ -74,71 +78,99 @@ class _ProjectItem extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: isEven
-            ? [
-                _image(context),
-                _text(context),
-              ]
-            : [
-                _text(context),
-                _image(context),
-              ],
+      child: ResponsiveRowColumn(
+        rowCrossAxisAlignment: CrossAxisAlignment.start,
+        layout: isRow
+            ? ResponsiveRowColumnType.ROW
+            : ResponsiveRowColumnType.COLUMN,
+        children: [
+          ResponsiveRowColumnItem(
+            rowFlex: 1,
+            rowOrder: isEven ? 1 : 2,
+            // columnFit: FlexFit.loose,
+            // columnFlex: 2,
+            child: _image(context, !isRow),
+          ),
+          ResponsiveRowColumnItem(
+            rowFlex: 1,
+            rowOrder: !isEven ? 1 : 2,
+            // columnFlex: 3,
+            // columnFit: FlexFit.loose,
+            child: _text(context),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _image(BuildContext context) {
+  Widget _image(BuildContext context, bool isColumn) {
     const radius = Radius.circular(12);
     const radiusZero = Radius.zero;
 
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: isEven ? radius : radiusZero,
-            bottomLeft: isEven ? radius : radiusZero,
-            topRight: !isEven ? radius : radiusZero,
-            bottomRight: !isEven ? radius : radiusZero,
-          ),
-          color: Theme.of(context).colorScheme.onInverseSurface,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: isColumn
+              ? radius
+              : isEven
+                  ? radius
+                  : radiusZero,
+          bottomLeft: isColumn
+              ? radiusZero
+              : isEven
+                  ? radius
+                  : radiusZero,
+          topRight: isColumn
+              ? radius
+              : !isEven
+                  ? radius
+                  : radiusZero,
+          bottomRight: isColumn
+              ? radiusZero
+              : !isEven
+                  ? radius
+                  : radiusZero,
         ),
-        padding: const EdgeInsets.all(48),
+        color: Theme.of(context).colorScheme.onInverseSurface,
+      ),
+      padding: const EdgeInsets.all(32),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: !isColumn ? 400 : 340,
+          minWidth: context.screenWidth,
+        ),
         child: Image.network(
           item.image,
-          height: 400,
         ),
       ),
     );
   }
 
   Widget _text(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(48),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              item.name,
-              style: context.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(48),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            item.name,
+            style: context.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
             ),
-            GapConstant.h24,
-            Text(
-              item.description,
-              style: context.bodyMedium,
-            ),
-            GapConstant.h32,
-            _technologies(),
-            GapConstant.h56,
-            _openIcon(),
-          ],
-        ),
+            textScaleFactor: context.titleScaleFactor,
+          ),
+          GapConstant.h24,
+          Text(
+            item.description,
+            style: context.bodyMedium,
+          ),
+          GapConstant.h32,
+          _technologies(),
+          GapConstant.h56,
+          _openIcon(),
+        ],
       ),
     );
   }
