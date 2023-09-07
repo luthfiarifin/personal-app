@@ -31,8 +31,9 @@ class ProjectsLayout extends StatelessWidget {
           Text(
             projects.text,
             style: context.bodyLarge,
+            textAlign: TextAlign.center,
           ),
-          GapConstant.h48,
+          GapConstant.h16,
           _listProjects(),
         ],
       ),

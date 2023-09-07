@@ -28,8 +28,9 @@ class SkillsLayout extends StatelessWidget {
           Text(
             skills.text,
             style: context.bodyLarge,
+            textAlign: TextAlign.center,
           ),
-          GapConstant.h48,
+          GapConstant.h32,
           _listSkills()
         ],
       ),
