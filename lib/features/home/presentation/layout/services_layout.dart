@@ -85,7 +85,6 @@ class _ServicesItem extends StatelessWidget {
                 context.colorScheme.onSurface,
                 BlendMode.srcIn,
               ),
-              // color: Theme.of(context).colorScheme.onSurface,
             ),
             GapConstant.h96,
             Text(
