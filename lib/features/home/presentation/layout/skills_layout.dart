@@ -7,6 +7,8 @@ import 'package:personal_app/features/home/data/model/home_skills_response_model
 import 'package:personal_app/features/home/presentation/widget/chip_widget.dart';
 import 'package:personal_app/features/home/presentation/widget/home_background.dart';
 
+import '../../../../core/presentation/widget/image_loader.dart';
+
 class SkillsLayout extends StatelessWidget {
   final HomeSkillsResponseModel skills;
 
@@ -69,7 +71,7 @@ class _SkillsItem extends StatelessWidget {
 
     return Column(
       children: [
-        Image.network(
+        ImageLoader(
           item.image,
           width: context.isDisplayLargeThanTablet ? tabletSize : phoneSize,
           height: context.isDisplayLargeThanTablet ? tabletSize : phoneSize,

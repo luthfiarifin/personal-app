@@ -7,6 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
 import '../../../../core/presentation/util/launch_util.dart';
+import '../../../../core/presentation/widget/image_loader.dart';
 import '../widget/home_background.dart';
 
 class HomeHeaderLayout extends StatelessWidget {
@@ -47,7 +48,7 @@ class HomeHeaderLayout extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(
           maxHeight: context.isDisplayLargeThanTablet ? 380 : 300),
-      child: Image.network(
+      child: ImageLoader(
         header.image,
       ),
     );
