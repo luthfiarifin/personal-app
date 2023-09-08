@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         if (state is GetHomeLoaded) {
           return ScrollablePositionedList.builder(
-                        itemCount: _bodyItems.length,
+            itemCount: _bodyItems.length,
             itemBuilder: (context, index) => _bodyItems[index],
             itemScrollController: _itemScrollController,
           );
