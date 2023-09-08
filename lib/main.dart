@@ -39,20 +39,7 @@ class MyApp extends StatelessWidget {
             const Breakpoint(start: 801, end: 1920, name: DESKTOP),
             const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
           ],
-          child: Builder(
-            builder: (context) {
-              return ResponsiveScaledBox(
-                width: ResponsiveValue<double>(context, conditionalValues: [
-                  Condition.equals(name: 'SMALL_MOBILE', value: 361),
-                ]).value,
-                child: BouncingScrollWrapper.builder(
-                  context,
-                  child!,
-                  dragWithMouse: true,
-                ),
-              );
-            },
-          ),
+          child: child!,
         ),
       ),
     );
