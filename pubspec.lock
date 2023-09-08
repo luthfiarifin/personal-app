@@ -13,10 +13,10 @@ packages:
     dependency: "direct main"
     description:
       name: adaptive_theme
-      sha256: "04e97540dc6e8a454331020f5350d2bfc4ee457ec9866875a5334bcece964ad0"
+      sha256: "28df95a6b86993b38a51ee97d33a9f1d845fd1c7320c21c5d5e2183b5605e152"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.1"
+    version: "3.4.0"
   analyzer:
     dependency: transitive
     description:
