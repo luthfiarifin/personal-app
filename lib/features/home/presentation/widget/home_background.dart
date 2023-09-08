@@ -24,7 +24,7 @@ class HomeBackground extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: context.isDisplayLargeThanTablet ? 90 : 32,
-        horizontal: 16,
+        horizontal: 32,
       ),
       color: color,
       child: MaxWidthBox(

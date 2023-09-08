@@ -31,19 +31,19 @@ class SkillsLayout extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           GapConstant.h32,
-          _listSkills()
+          _listSkills(context),
         ],
       ),
     );
   }
 
-  Widget _listSkills() {
+  Widget _listSkills(BuildContext context) {
     var items = skills.items;
 
     return Wrap(
       alignment: WrapAlignment.center,
       runSpacing: 32,
-      spacing: 64,
+      spacing: context.isDisplayLargeThanTablet ? 64 : 32,
       children: items
           .map(
             (e) => _SkillsItem(
@@ -64,24 +64,24 @@ class _SkillsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: context.isDisplayLargeThanTablet ? 84 : 68,
-      ),
-      child: Column(
-        children: [
-          Image.network(
-            item.image,
-            color: item.isBlack == true ? context.colorScheme.onSurface : null,
-          ),
-          GapConstant.h16,
-          Text(
-            item.text,
-            style: context.bodyMedium,
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+    double tabletSize = 84;
+    double phoneSize = 64;
+
+    return Column(
+      children: [
+        Image.network(
+          item.image,
+          width: context.isDisplayLargeThanTablet ? tabletSize : phoneSize,
+          height: context.isDisplayLargeThanTablet ? tabletSize : phoneSize,
+        ),
+        GapConstant.h16,
+        Text(
+          item.text,
+          style: context.bodyMedium,
+          textAlign: TextAlign.center,
+          textScaleFactor: context.titleScaleFactor,
+        ),
+      ],
     );
   }
 }

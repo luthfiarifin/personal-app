@@ -7,6 +7,7 @@ import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
 import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:responsive_framework/max_width_box.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../../../core/presentation/constant/size_constant.dart';
 import '../../data/model/home_response_model.dart';
@@ -38,6 +39,8 @@ class HomePage extends StatefulWidget implements AutoRouteWrapper {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ItemScrollController _itemScrollController = ItemScrollController();
+
   HomeResponseModel? _data;
 
   @override
@@ -67,6 +70,7 @@ class _HomePageState extends State<HomePage> {
   AppBar _appBar(BuildContext context) {
     return AppBar(
       centerTitle: false,
+      titleSpacing: 32,
       titleTextStyle: Theme.of(context).textTheme.titleSmall,
       scrolledUnderElevation: 4,
       shadowColor: Colors.grey.shade50.withOpacity(0.2),
@@ -128,16 +132,10 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         if (state is GetHomeLoaded) {
-          return ListView(
-            children: [
-              HomeHeaderLayout(header: _data!.header),
-              AboutMeLayout(aboutMe: _data!.aboutMe),
-              ServicesLayout(services: _data!.services),
-              SkillsLayout(skills: _data!.skills),
-              ProjectsLayout(projects: _data!.projects),
-              ContactLayout(contact: _data!.contact),
-              BottomLayout(bottom: _data!.bottom),
-            ],
+          return ScrollablePositionedList.builder(
+            itemCount: _bodyItems.length,
+            itemBuilder: (context, index) => _bodyItems[index],
+            itemScrollController: _itemScrollController,
           );
         }
 
@@ -148,14 +146,31 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  List<Widget> get _bodyItems => [
+        HomeHeaderLayout(header: _data!.header),
+        AboutMeLayout(aboutMe: _data!.aboutMe),
+        ServicesLayout(services: _data!.services),
+        SkillsLayout(skills: _data!.skills),
+        ProjectsLayout(projects: _data!.projects),
+        ContactLayout(contact: _data!.contact),
+        BottomLayout(bottom: _data!.bottom),
+      ];
+
   List<_ToolbarItem> _generateToolbarItem() {
     return [
-      _ToolbarItem(text: 'About'),
-      _ToolbarItem(text: 'About'),
-      _ToolbarItem(text: 'About'),
-      _ToolbarItem(text: 'About'),
-      _ToolbarItem(text: 'About'),
+      _ToolbarItem(text: 'About', onTap: () => _changeToIndex(1)),
+      _ToolbarItem(text: 'Services', onTap: () => _changeToIndex(2)),
+      _ToolbarItem(text: 'Skills', onTap: () => _changeToIndex(3)),
+      _ToolbarItem(text: 'Projects', onTap: () => _changeToIndex(4)),
+      _ToolbarItem(text: 'Contact', onTap: () => _changeToIndex(5)),
     ];
+  }
+
+  void _changeToIndex(int i) {
+    _itemScrollController.scrollTo(
+      index: i,
+      duration: const Duration(milliseconds: 300),
+    );
   }
 }
 

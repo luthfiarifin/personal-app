@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
 import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
@@ -76,11 +77,14 @@ class _ServicesItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
+            SvgPicture.network(
               item.icon,
               width: 32,
               height: 32,
-              color: Theme.of(context).colorScheme.onSurface,
+              colorFilter: ColorFilter.mode(
+                context.colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
             ),
             GapConstant.h96,
             Text(

@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
 import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:personal_app/features/home/data/model/home_contact_response_model.dart';
@@ -93,11 +94,14 @@ class ContactLayout extends StatelessWidget {
             (i, e) => Padding(
               padding: EdgeInsets.only(right: i == items.length - 1 ? 0 : 2),
               child: IconButton(
-                icon: Image.network(
+                icon: SvgPicture.network(
                   e.icon ?? '',
                   height: 24,
                   width: 24,
-                  color: context.textColor,
+                  colorFilter: ColorFilter.mode(
+                    context.textColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 onPressed: () {
                   _launchUrl(e.link);
