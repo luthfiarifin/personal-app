@@ -46,3 +46,13 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/animations/
+
+flutter_native_splash:
+  android: false
+  ios: false
+  web: true
+  color_web: "#fdfcff"
+  color_dark_web: "#1a1c1e"
+  image_web: assets/animations/splash_loading.gif
+  image_dark_web: assets/animations/splash_loading.gif
