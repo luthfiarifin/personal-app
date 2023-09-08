@@ -8,6 +8,7 @@ import 'package:personal_app/features/home/data/model/home_projects_response_mod
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
+import '../../../../core/presentation/widget/image_loader.dart';
 import '../widget/chip_widget.dart';
 import '../widget/home_background.dart';
 
@@ -136,7 +137,7 @@ class _ProjectItem extends StatelessWidget {
           maxHeight: !isColumn ? 400 : 340,
           minWidth: context.screenWidth,
         ),
-        child: Image.network(
+        child: ImageLoader(
           item.image,
         ),
       ),

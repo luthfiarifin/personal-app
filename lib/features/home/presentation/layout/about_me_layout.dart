@@ -6,6 +6,7 @@ import 'package:personal_app/features/home/data/model/home_about_me_response_mod
 import 'package:personal_app/features/home/presentation/widget/home_background.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../../../core/presentation/widget/image_loader.dart';
 import '../widget/chip_widget.dart';
 
 class AboutMeLayout extends StatelessWidget {
@@ -75,7 +76,7 @@ class AboutMeLayout extends StatelessWidget {
       constraints: BoxConstraints(
         maxHeight: context.isDisplayLargeThanTablet ? 500 : 300,
       ),
-      child: Image.network(
+      child: ImageLoader(
         aboutMe.image,
         height: 500,
       ),

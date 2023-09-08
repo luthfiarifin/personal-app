@@ -5,6 +5,7 @@ import 'package:personal_app/features/home/data/model/home_experiences_item_resp
 import 'package:personal_app/features/home/data/model/home_experiences_response_model.dart';
 
 import '../../../../core/presentation/constant/gap_constant.dart';
+import '../../../../core/presentation/widget/image_loader.dart';
 import '../widget/chip_widget.dart';
 import '../widget/home_background.dart';
 
@@ -95,7 +96,7 @@ class _ExperienceItem extends StatelessWidget {
       flex: 2,
       child: Align(
         alignment: Alignment.topLeft,
-        child: Image.network(
+        child: ImageLoader(
           item.logo,
           height: 68,
         ),
