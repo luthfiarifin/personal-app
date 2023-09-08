@@ -64,17 +64,15 @@ class _SkillsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double tabletSize = 84;
+    double phoneSize = 64;
+
     return Column(
       children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: context.isDisplayLargeThanTablet ? 84 : 36,
-            minHeight: 40,
-          ),
-          child: Image.network(
-            item.image,
-            color: item.isBlack == true ? context.colorScheme.onSurface : null,
-          ),
+        Image.network(
+          item.image,
+          width: context.isDisplayLargeThanTablet ? tabletSize : phoneSize,
+          height: context.isDisplayLargeThanTablet ? tabletSize : phoneSize,
         ),
         GapConstant.h16,
         Text(
