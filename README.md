@@ -1,16 +1,51 @@
-# personal_app
+# Luthfi Personal Website
 
-A new Flutter project.
+![Preview](https://github.com/luthfiarifin/personal-app/assets/45541667/88561d4b-0ec2-44be-8f31-dcecdea06ad5)
+
+## Overview
+
+This is my personal website built with Flutter, following clean architecture principles. It is designed to be responsive, providing an optimal user experience on both mobile and desktop devices. The website features dynamic content loaded from an API, dependency injection using `injectable` and `get_it`, state management with Cubit, and adaptive theming.
+
+## Design
+
+The design of this website is based on the following Figma templates:
+- [Mobile & Desktop Design Template](https://www.figma.com/file/PmP6XInamykx0NO3gnKj8K/Personal-Portfolio-Website-Template-%7C-Mobile-%26-Desktop-(Community)?type=design&node-id=0%3A1&mode=design&t=lfokPQpcNTORM219-1)
+- [Figma Community Template](https://www.figma.com/community/file/1262992249991763120/Personal-Portfolio-Website-Template-%7C-Mobile-%26-Desktop)
+
+## Sections
+
+- Header
+- About
+- Service
+- Skills
+- Projects
+- Contact
+
+## Technology Stack
+
+- Flutter: The framework used to build the website.
+- Clean Architecture: Organizes code for maintainability and scalability.
+- Responsive Design: Ensures the website adapts to different screen sizes.
+- Dependency Injection: Utilizes `injectable` and `get_it` for efficient dependency management.
+- Cubit: Implements state management for a smooth user experience.
+- Adaptive Theming: Provides a seamless transition between light and dark themes.
+- Dynamic Content API: Fetches content from an API to keep the site up-to-date.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this website locally, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+1. Clone this repository.
+2. Install Flutter if you haven't already.
+3. Navigate to the project directory.
+4. Run `flutter pub get` to install dependencies.
+5. Configure API endpoints and other settings as needed.
+6. Run `flutter run` to start the development server.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Contributing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Contributions are welcome! Feel free to open issues or pull requests to improve this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/luthfiarifin/personal-app/blob/main/LICENSE) file for details.
