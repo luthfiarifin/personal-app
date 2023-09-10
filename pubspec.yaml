@@ -28,6 +28,7 @@ dependencies:
   injectable: ^2.3.0
   intl: ^0.18.1
   json_annotation: ^4.8.1
+  lottie: ^2.6.0
   responsive_framework: ^1.1.0
   scrollable_positioned_list: ^0.3.8
   url_launcher: ^6.1.14
@@ -47,6 +48,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/animations/
+    - assets/lottie/
 
 flutter_native_splash:
   android: false
