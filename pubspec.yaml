@@ -21,12 +21,14 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.3
   flutter_markdown: ^0.6.17+2
+  flutter_native_splash: ^2.3.2
   flutter_svg: ^2.0.7
   get_it: ^7.6.2
   google_fonts: ^5.1.0
   injectable: ^2.3.0
   intl: ^0.18.1
   json_annotation: ^4.8.1
+  lottie: ^2.6.0
   responsive_framework: ^1.1.0
   scrollable_positioned_list: ^0.3.8
   url_launcher: ^6.1.14
@@ -45,3 +47,14 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/animations/
+    - assets/lottie/
+
+flutter_native_splash:
+  android: false
+  ios: false
+  web: true
+  color_web: "#fdfcff"
+  color_dark_web: "#1a1c1e"
+  image_web: assets/animations/splash_loading.gif
+  image_dark_web: assets/animations/splash_loading.gif

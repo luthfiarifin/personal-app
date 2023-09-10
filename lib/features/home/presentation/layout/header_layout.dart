@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
 import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
 import 'package:personal_app/features/home/data/model/home_header_response_model.dart';
@@ -58,12 +59,22 @@ class HomeHeaderLayout extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          header.title,
-          style: context.displayMedium?.copyWith(
-            fontWeight: FontWeight.w900,
-          ),
-          textScaleFactor: context.titleScaleFactor,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              header.title,
+              style: context.displayMedium?.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+              textScaleFactor: context.titleScaleFactor,
+            ),
+            GapConstant.w8,
+            Lottie.asset(
+              'assets/lottie/lo_hello.json',
+              width: 72,
+            ),
+          ],
         ),
         GapConstant.h16,
         Text(
