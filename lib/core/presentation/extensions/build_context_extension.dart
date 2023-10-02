@@ -39,4 +39,17 @@ extension XColorTheme on BuildContext {
   Color get textColor => isDarkMode ? Colors.white : Colors.grey.shade600;
   Color get shadowColor =>
       isDarkMode ? Colors.grey.shade800 : Colors.grey.shade200;
+  Color get borderColor =>
+      isDarkMode ? Colors.grey.shade600 : Colors.grey.shade400;
+}
+
+extension XBoxDecoration on BuildContext {
+  BoxDecoration get radiusBorderDecoration => BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: colorScheme.background,
+        border: Border.all(
+          color: borderColor,
+          width: .4,
+        ),
+      );
 }
