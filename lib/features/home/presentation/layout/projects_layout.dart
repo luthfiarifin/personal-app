@@ -70,16 +70,7 @@ class _ProjectItem extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.only(top: 32),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Theme.of(context).colorScheme.background,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 16,
-            color: context.shadowColor,
-          ),
-        ],
-      ),
+      decoration: context.radiusBorderDecoration,
       child: ResponsiveRowColumn(
         rowCrossAxisAlignment: CrossAxisAlignment.start,
         layout: isRow
@@ -129,7 +120,7 @@ class _ProjectItem extends StatelessWidget {
                   ? radius
                   : radiusZero,
         ),
-        color: Theme.of(context).colorScheme.onInverseSurface,
+        color: context.colorScheme.onInverseSurface,
       ),
       padding: const EdgeInsets.all(32),
       child: ConstrainedBox(

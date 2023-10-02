@@ -66,12 +66,8 @@ class _ServicesItem extends StatelessWidget {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 290),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+        decoration: context.radiusBorderDecoration.copyWith(
           color: Theme.of(context).colorScheme.onInverseSurface,
-          boxShadow: [
-            BoxShadow(blurRadius: 16, color: context.shadowColor),
-          ],
         ),
         padding: const EdgeInsets.all(32),
         child: Column(
