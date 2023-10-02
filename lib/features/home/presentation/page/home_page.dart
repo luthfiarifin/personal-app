@@ -6,6 +6,7 @@ import 'package:personal_app/config/di/injection.dart';
 import 'package:personal_app/core/presentation/constant/gap_constant.dart';
 import 'package:personal_app/core/presentation/extensions/build_context_extension.dart';
 import 'package:personal_app/core/presentation/extensions/responsive_extension.dart';
+import 'package:personal_app/features/home/presentation/layout/article_layout.dart';
 import 'package:responsive_framework/max_width_box.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -152,6 +153,7 @@ class _HomePageState extends State<HomePage> {
         ServicesLayout(services: _data!.services),
         SkillsLayout(skills: _data!.skills),
         ProjectsLayout(projects: _data!.projects),
+        ArticleLayout(article: _data!.article),
         ContactLayout(contact: _data!.contact),
         BottomLayout(bottom: _data!.bottom),
       ];
@@ -162,7 +164,8 @@ class _HomePageState extends State<HomePage> {
       _ToolbarItem(text: 'Services', onTap: () => _changeToIndex(2)),
       _ToolbarItem(text: 'Skills', onTap: () => _changeToIndex(3)),
       _ToolbarItem(text: 'Projects', onTap: () => _changeToIndex(4)),
-      _ToolbarItem(text: 'Contact', onTap: () => _changeToIndex(5)),
+      _ToolbarItem(text: 'Blog', onTap: () => _changeToIndex(5)),
+      _ToolbarItem(text: 'Contact', onTap: () => _changeToIndex(6)),
     ];
   }
 

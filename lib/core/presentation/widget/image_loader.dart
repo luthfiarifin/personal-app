@@ -5,6 +5,8 @@ class ImageLoader extends StatelessWidget {
   final bool useLoading;
   final double? width;
   final double? height;
+  final BoxFit? fit;
+  final Color? color;
 
   const ImageLoader(
     this.url, {
@@ -12,6 +14,8 @@ class ImageLoader extends StatelessWidget {
     this.useLoading = true,
     this.width,
     this.height,
+    this.fit,
+    this.color,
   });
 
   @override
@@ -20,6 +24,9 @@ class ImageLoader extends StatelessWidget {
       url,
       width: width,
       height: height,
+      fit: fit,
+      color: color,
+      colorBlendMode: color == null ? null : BlendMode.srcATop,
       loadingBuilder: !useLoading
           ? null
           : (context, child, loadingProgress) {

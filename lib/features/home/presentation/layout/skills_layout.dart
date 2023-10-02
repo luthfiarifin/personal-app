@@ -66,8 +66,8 @@ class _SkillsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double tabletSize = 84;
-    double phoneSize = 64;
+    const double tabletSize = 84;
+    const double phoneSize = 64;
 
     return Column(
       children: [
