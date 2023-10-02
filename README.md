@@ -1,6 +1,6 @@
 # Luthfi Personal Website
 
-![Preview](https://github.com/luthfiarifin/personal-app/assets/45541667/88561d4b-0ec2-44be-8f31-dcecdea06ad5)
+![Preview](https://github.com/luthfiarifin/personal-app/blob/master/screenshots/preview.png)
 
 ## Overview
 
@@ -19,6 +19,7 @@ The design of this website is based on the following Figma templates:
 - Service
 - Skills
 - Projects
+- Blog
 - Contact
 
 ## Technology Stack
@@ -39,8 +40,7 @@ To run this website locally, follow these steps:
 2. Install Flutter if you haven't already.
 3. Navigate to the project directory.
 4. Run `flutter pub get` to install dependencies.
-5. Configure API endpoints and other settings as needed.
-6. Run `flutter run` to start the development server.
+5. Run `flutter run` to start the development server.
 
 ## Contributing
 
