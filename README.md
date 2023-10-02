@@ -1,6 +1,6 @@
 # Luthfi Personal Website
 
-![Preview](https://github.com/luthfiarifin/personal-app/blob/master/screenshots/preview.png)
+![Preview](https://github.com/luthfiarifin/personal-app/blob/main/screenshots/preview.png)
 
 ## Overview
 
