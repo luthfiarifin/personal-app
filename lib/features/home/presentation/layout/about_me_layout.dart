@@ -78,7 +78,7 @@ class AboutMeLayout extends StatelessWidget {
       ),
       child: ImageLoader(
         aboutMe.image,
-        height: 500,
+        height: 400,
       ),
     );
   }

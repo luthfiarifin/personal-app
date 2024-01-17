@@ -130,6 +130,7 @@ class _ProjectItem extends StatelessWidget {
         ),
         child: ImageLoader(
           item.image,
+          height: context.isDisplayLargeThanTablet ? null : 200,
         ),
       ),
     );

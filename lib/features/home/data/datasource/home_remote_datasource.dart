@@ -1,8 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/data/network/api_client.dart';
 import '../../../../core/data/network/api_constant.dart';
-import '../../../../core/data/util/data_source_util.dart';
 import '../model/home_response_model.dart';
 
 abstract class HomeRemoteDataSource {
@@ -11,17 +10,17 @@ abstract class HomeRemoteDataSource {
 
 @LazySingleton(as: HomeRemoteDataSource)
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
-  final Dio dio;
+  final ApiClient apiClient;
 
-  HomeRemoteDataSourceImpl(this.dio);
+  const HomeRemoteDataSourceImpl(
+    this.apiClient,
+  );
 
   @override
   Future<HomeResponseModel> getData() {
-    return DataSourceUtil.dioCatchOrThrow(() async {
-      Response response = await dio.get(
-        ApiConstant.data,
-      );
-      return HomeResponseModel.fromJson(response.data);
-    });
+    return apiClient.get(
+      ApiConstant.data,
+      converter: (e) => HomeResponseModel.fromJson(e),
+    );
   }
 }

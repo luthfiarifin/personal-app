@@ -51,6 +51,7 @@ class HomeHeaderLayout extends StatelessWidget {
           maxHeight: context.isDisplayLargeThanTablet ? 380 : 300),
       child: ImageLoader(
         header.image,
+        height: context.isDisplayLargeThanTablet ? 340 : 280,
       ),
     );
   }
