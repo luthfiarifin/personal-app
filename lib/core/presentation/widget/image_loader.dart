@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ImageLoader extends StatelessWidget {
+class ImageLoader extends StatefulWidget {
   final String url;
   final bool useLoading;
   final double? width;
@@ -19,32 +19,41 @@ class ImageLoader extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    var image = Image.network(
-      url,
-      width: width,
-      height: height,
-      fit: fit,
-      color: color,
-      colorBlendMode: color == null ? null : BlendMode.srcATop,
-      loadingBuilder: !useLoading
-          ? null
-          : (context, child, loadingProgress) {
-              if (loadingProgress == null) return child;
+  State<ImageLoader> createState() => _ImageLoaderState();
+}
 
-              return Center(
-                child: CircularProgressIndicator.adaptive(
-                  value: loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded /
-                          loadingProgress.expectedTotalBytes!
-                      : null,
-                ),
-              );
-            },
-    );
+class _ImageLoaderState extends State<ImageLoader> {
+  late var image = Image.network(
+    widget.url,
+    width: widget.width,
+    height: widget.height,
+    fit: widget.fit,
+    color: widget.color,
+    colorBlendMode: widget.color == null ? null : BlendMode.srcATop,
+    loadingBuilder: !widget.useLoading
+        ? null
+        : (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
 
+            return Center(
+              child: CircularProgressIndicator.adaptive(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            );
+          },
+  );
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     precacheImage(image.image, context);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return image;
   }
 }
