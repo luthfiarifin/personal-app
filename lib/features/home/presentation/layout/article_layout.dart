@@ -103,8 +103,9 @@ class _ArticleItem extends _BaseArticleItem {
           ),
           child: ImageLoader(
             item.image,
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.cover,
             height: 200,
+            width: MediaQuery.of(context).size.width,
           ),
         ),
         Padding(
